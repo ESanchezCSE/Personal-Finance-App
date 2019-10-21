@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BookKeeper</string>
+    <string name="edit_Username">Username</string>
+    <string name="edit_Password">Password</string>
+</resources>
