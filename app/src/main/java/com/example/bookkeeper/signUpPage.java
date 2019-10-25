@@ -24,7 +24,7 @@ public class signUpPage extends AppCompatActivity {
 
     Button submitBTN;
 
-    // [START declare_auth]
+    // [START declare_auth]  //hi
     private FirebaseAuth mAuth;
     // [END declare_auth]
 
