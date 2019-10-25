@@ -49,7 +49,7 @@ public class signUpPage extends AppCompatActivity {
         submitBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Creates user
                 createUser(mEmailField.getText().toString(), mPasswordField.getText().toString());
             }
         });
