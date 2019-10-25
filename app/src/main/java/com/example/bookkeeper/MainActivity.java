@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         editEmail = (EditText) findViewById(R.id.emailInput);
         editPassword = (EditText) findViewById(R.id.passwordInput);
 
+        //Button
         logInButton = (Button) findViewById(R.id.logInBTN);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sendLogIn(String userEmail, String userPassword) {
+        //Checks weather the user is in the system.
         if ((userEmail.equals("admin")) && (userPassword.equals("password"))){
             Intent intent1 = new Intent(this, mainPage.class);
             startActivity(intent1);
