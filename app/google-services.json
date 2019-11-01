@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "961687033014",
+    "firebase_url": "https://personal-finance-app-ea76b.firebaseio.com",
+    "project_id": "personal-finance-app-ea76b",
+    "storage_bucket": "personal-finance-app-ea76b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961687033014:android:29777488f5e2e12d6ec217",
+        "android_client_info": {
+          "package_name": "com.example.bookkeeper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961687033014-met5p16nahltd8e2kv2fcsbaku24hoal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcbdjInx3b4Q-0Q7S7ASkfcTFHxN8xjs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961687033014-met5p16nahltd8e2kv2fcsbaku24hoal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
