@@ -18,7 +18,7 @@
             android:id="@+id/pre_income_tax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pre_income_tax" />
+            android:text="Pre Tax Income" />
 
         <EditText
             android:id="@+id/input_income"
@@ -27,11 +27,12 @@
             android:ems="10"
             android:hint="$0"
             android:inputType="numberDecimal" />
+
         <TextView
             android:id="@+id/monthly_rent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/monthly_rent" />
+            android:text="Monthly Rent / Mortgagae" />
 
         <EditText
             android:id="@+id/input_rent"
@@ -45,7 +46,7 @@
             android:id="@+id/monthly_food"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/monthly_food" />
+            android:text="Average Monthly Cost on Food" />
 
         <EditText
             android:id="@+id/input_monthly_food"
@@ -59,7 +60,7 @@
             android:id="@+id/monthly_phone_bill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/monthly_phone_bill" />
+            android:text="Monthly Phone Bill" />
 
         <EditText
             android:id="@+id/input_phone_bill"
@@ -73,7 +74,7 @@
             android:id="@+id/monthly_utilities_bill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/monthly_utilities_bill" />
+            android:text="Monthly Utilities Bill" />
 
         <EditText
             android:id="@+id/input_utilities"
@@ -87,7 +88,7 @@
             android:id="@+id/monthly_car_insurance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/monthly_car_insurance" />
+            android:text="Monthly Car Insurance" />
 
         <EditText
             android:id="@+id/input_car_insurance"
@@ -101,7 +102,7 @@
             android:id="@+id/monthly_health_insurance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/monthly_health_insurance" />
+            android:text="Monthly Health Insurance" />
 
         <EditText
             android:id="@+id/input_health_insurance"
@@ -115,7 +116,7 @@
             android:id="@+id/total_loan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total_loan" />
+            android:text="Total Loan Amount" />
 
         <EditText
             android:id="@+id/input_loan"
@@ -124,11 +125,12 @@
             android:ems="10"
             android:hint="$0"
             android:inputType="numberDecimal" />
+
         <TextView
             android:id="@+id/total_student_loan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total_student_loan" />
+            android:text="Student Loan Amount" />
 
         <EditText
             android:id="@+id/input_student_loan"
@@ -137,11 +139,12 @@
             android:ems="10"
             android:hint="$0"
             android:inputType="numberDecimal" />
+
         <TextView
             android:id="@+id/student_loan_interest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/student_loan_interest" />
+            android:text="Student Loan Interest Rate" />
 
         <EditText
             android:id="@+id/input_interest_rate"
@@ -150,11 +153,12 @@
             android:ems="10"
             android:hint="0%"
             android:inputType="numberDecimal" />
+
         <TextView
             android:id="@+id/total_saving"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total_saving" />
+            android:text="Total Saving" />
 
         <EditText
             android:id="@+id/input_saving"
