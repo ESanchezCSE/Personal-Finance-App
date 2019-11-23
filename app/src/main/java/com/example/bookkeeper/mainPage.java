@@ -39,8 +39,8 @@ public class mainPage extends AppCompatActivity {
         startActivity(intent5);
     }
 
-    public void proceedToSettings(View view) {
-        Intent intent6 = new Intent(this, settings.class);
+   public void proceedToAccountSetup(View view) {
+        Intent intent6 = new Intent(this, accountSetup.class);
         startActivity(intent6);
     }
 
