@@ -2,4 +2,11 @@
     <string name="app_name">BookKeeper</string>
     <string name="edit_Username">Email</string>
     <string name="edit_Password">Password</string>
+
+    <array name="timeLapse">
+        <item>Weekly</item>
+        <item>Bi-Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </array>
 </resources>
