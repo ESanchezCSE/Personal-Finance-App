@@ -71,7 +71,7 @@ public class accountSetup extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             uid = user.getUid();
-            Toast.makeText(this, "" + user.getUid(), Toast.LENGTH_SHORT).show();//Error checking
+            //Toast.makeText(this, "" + user.getUid(), Toast.LENGTH_SHORT).show();//Error checking
         }// [END get_user_profile]
 
         buttonSubmitIncome.setOnClickListener(new View.OnClickListener() {
