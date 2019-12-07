@@ -5,43 +5,88 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class mainPage extends AppCompatActivity {
+
+    ImageView bgapp, pig;
+    LinearLayout textsplash, texthome, menus;
+    Animation frombottom;
+    Button btn_1,btn_2,btn_3,btn_4,btn_5,btn_6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        frombottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
+        bgapp = (ImageView) findViewById(R.id.bgapp);
+        pig = (ImageView) findViewById(R.id.pig);
+        textsplash = (LinearLayout) findViewById(R.id.textsplash);
+        texthome = (LinearLayout) findViewById(R.id.texthome);
+        menus = (LinearLayout) findViewById(R.id.menus);
+
+        bgapp.animate().translationY(-2600).setDuration(800).setStartDelay(300);
+        pig.animate().alpha(0).setDuration(800).setStartDelay(600);
+        textsplash.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(300);
+
+        texthome.startAnimation(frombottom);
+        menus.startAnimation(frombottom);
+        btn_1 = (Button)findViewById(R.id.button1);
+        btn_2 = (Button)findViewById(R.id.button2);
+        btn_3 = (Button)findViewById(R.id.button3);
+        btn_4 = (Button)findViewById(R.id.button4);
+        btn_5 = (Button)findViewById(R.id.button5);
+        btn_6 = (Button)findViewById(R.id.button6);
+
+        btn_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(mainPage.this,personalGoals.class);
+                startActivity(intent1);
+            }
+        });
+        btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(mainPage.this,addTransaction.class);
+                startActivity(intent2);
+            }
+        });
+        btn_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(mainPage.this,accountReport.class);
+                startActivity(intent3);
+            }
+        });
+        btn_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent4 = new Intent(mainPage.this,loanPage.class);
+                startActivity(intent4);
+            }
+        });
+        btn_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent5 = new Intent(mainPage.this,adviceColumn.class);
+                startActivity(intent5);
+            }
+        });
+        btn_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent6 = new Intent(mainPage.this,settings.class);
+                startActivity(intent6);
+            }
+        });
+
     }
 
-    public void proceedToPersonalGoals(View view) {
-        Intent intent1 = new Intent(this, personalGoals.class);
-        startActivity(intent1);
-    }
-
-    public void proceedToAddTransaction(View view) {
-        Intent intent2 = new Intent(this, addTransaction.class);
-        startActivity(intent2);
-    }
-
-    public void proceedToLoanPage(View view) {
-        Intent intent3 = new Intent(this, loanPage.class);
-        startActivity(intent3);
-    }
-
-    public void proceedToAccountReport(View view) {
-        Intent intent4 = new Intent(this, accountReport.class);
-        startActivity(intent4);
-    }
-
-    public void proceedToAdviceColumn(View view) {
-        Intent intent5 = new Intent(this, adviceColumn.class);
-        startActivity(intent5);
-    }
-
-    public void proceedToSettings(View view) {
-        Intent intent6 = new Intent(this, settings.class);
-        startActivity(intent6);
-    }
 
 }
