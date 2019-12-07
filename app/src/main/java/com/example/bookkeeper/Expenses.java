@@ -1,6 +1,7 @@
 package com.example.bookkeeper;
 
 public class Expenses {
+    double rentBill;
     double electricityBill;
     double waterBill;
     double garbageBill;
@@ -18,7 +19,8 @@ public class Expenses {
 
     }
 
-    public Expenses(double electricityBill, double waterBill, double garbageBill, double insuranceBill, double groceriesBill, double childCareBill, double phoneBill, double internetBill, double gymBill, double streamingBill, double subscriptionBill, double totalCostOfBills) {
+    public Expenses(double rentBill, double electricityBill, double waterBill, double garbageBill, double insuranceBill, double groceriesBill, double childCareBill, double phoneBill, double internetBill, double gymBill, double streamingBill, double subscriptionBill, double totalCostOfBills) {
+        this.rentBill = rentBill;
         this.electricityBill = electricityBill;
         this.waterBill = waterBill;
         this.garbageBill = garbageBill;
@@ -33,8 +35,9 @@ public class Expenses {
         this.totalCostOfBills = totalCostOfBills;
     }
 
-    public double getElectricityBill() {
-        return electricityBill;
+
+    public double getRentBill() {
+        return rentBill;
     }
 
     public double getWaterBill() {

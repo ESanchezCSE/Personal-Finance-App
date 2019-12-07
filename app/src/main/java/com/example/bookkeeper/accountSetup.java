@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class accountSetup extends AppCompatActivity {
     EditText editIncome;
+    EditText editRent;
     EditText editElectricity;
     EditText editWater;
     EditText editGarbage;
@@ -49,6 +50,7 @@ public class accountSetup extends AppCompatActivity {
         databaseIncome = FirebaseDatabase.getInstance().getReference();
 
         editIncome = (EditText) findViewById(R.id.editIncome);
+        editRent = (EditText) findViewById(R.id.editRent);
         editElectricity = (EditText) findViewById(R.id.editElectricity);
         editWater = (EditText) findViewById(R.id.editWater);
         editGarbage = (EditText) findViewById(R.id.editGarbage);
@@ -121,6 +123,7 @@ public class accountSetup extends AppCompatActivity {
     }
 
     private void addExpenses(String uid){
+        double rent;
         double electricity;
         double water;
         double garbage;
@@ -133,6 +136,12 @@ public class accountSetup extends AppCompatActivity {
         double streaming;
         double subscription;
         double total;
+
+        if(!TextUtils.isEmpty(editRent.getText())){//Checks if edit text box is empty.
+            rent = Double.parseDouble(editRent.getText().toString());
+        } else{
+            rent = 0;
+        }
 
         if(!TextUtils.isEmpty(editElectricity.getText())){//Checks if edit text box is empty.
             electricity = Double.parseDouble(editElectricity.getText().toString());
@@ -200,9 +209,9 @@ public class accountSetup extends AppCompatActivity {
             subscription = 0;
         }
 
-        total = electricity + water + garbage + insurance + groceries + childCare + phone + internet + gym + streaming + subscription;
+        total = electricity + water + garbage + insurance + groceries + childCare + phone + internet + gym + streaming + subscription + rent;
 
-        Expenses expenses = new Expenses(electricity, water, garbage, insurance, groceries, childCare, phone, internet, gym, streaming, subscription, total);
+        Expenses expenses = new Expenses(rent, electricity, water, garbage, insurance, groceries, childCare, phone, internet, gym, streaming, subscription, total);
 
         databaseIncome.child("users").child(uid).child("expenses").setValue(expenses);
         Toast.makeText(this, "Expenses added", Toast.LENGTH_LONG).show();
