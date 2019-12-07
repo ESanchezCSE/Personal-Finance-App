@@ -81,7 +81,7 @@ public class mainPage extends AppCompatActivity {
         btn_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent6 = new Intent(mainPage.this,settings.class);
+                Intent intent6 = new Intent(mainPage.this,MainActivity.class);
                 startActivity(intent6);
             }
         });
