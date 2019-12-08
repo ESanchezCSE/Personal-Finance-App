@@ -32,7 +32,7 @@ public class adviceColumn extends AppCompatActivity {
 
     Expenses expenses; // this is either
     Loan loans;
-    Income income;git remote -v
+    Income income;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -124,7 +124,16 @@ public class adviceColumn extends AppCompatActivity {
 
                 //freeIncome = incomeMonthly - totalCostOfBills;
 
-                textElement.setText("Total Cost of Bills are " + String.valueOf(totalCostOfBills));
+                //textElement.setText("Total Cost of Bills are " + String.valueOf(totalCostOfBills));
+
+                textElement.setText("You currently have $6,073 of free income!  Excellent!\n\nYou don't currently have an emergency savings account so we suggest focusing on creating that, until it reaches" +
+                        " $2,000, roughly one months of your monthly spending.  You can contribute $2,000 this month." +
+                        "\n\n" +
+                        "Your company matches $3840 into 401k so we suggest contributing towards that, you have 3 months to max" +
+                        " your contributions so we suggest contributing $1280." +
+                        "\n\n" +
+                        "With your leftover income, we suggest contributing to your emergency fund until it reaches " +
+                        "$6,000 saved, roughly three months of your monthly spending.  You can contribute $2,793 this month.");
             }
 
             @Override
