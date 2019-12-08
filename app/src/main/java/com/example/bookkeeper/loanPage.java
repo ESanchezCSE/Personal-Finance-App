@@ -23,15 +23,12 @@ public class loanPage extends AppCompatActivity {
 
     private ValueEventListener mPostListener;
     private DatabaseReference mLoanReference;
-    DatabaseReference databaseIncome;
     private static final String TAG = "LoanPage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_page);
-
-        databaseIncome = FirebaseDatabase.getInstance().getReference();
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -60,8 +57,6 @@ public class loanPage extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 loan = dataSnapshot.getValue(Loan.class);
-                Toast.makeText(loanPage.this, "Loan Value at 1: " + loan.getInterestAmount1(),
-                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -69,7 +64,7 @@ public class loanPage extends AppCompatActivity {
                 // Getting Post failed, log a message
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                 // [START_EXCLUDE]
-                //Toast.makeText(loanPage.this, "Failed to load post.",Toast.LENGTH_SHORT).show(); //Error checking
+                Toast.makeText(loanPage.this, "Failed to load post.",Toast.LENGTH_SHORT).show(); //Error checking
                 // [END_EXCLUDE]
             }
         };
