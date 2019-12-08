@@ -5,5 +5,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".accountReport">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#3E838D"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/piggy"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:padding="8dp"
+                android:layout_marginTop="30dp"
+                android:text="Your income is:"
+                android:textSize="18sp"
+                android:textColor="#EEEEEE"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:padding="8dp"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:text="$0"
+                android:id="@+id/income"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:padding="8dp"
+                android:layout_marginTop="30dp"
+                android:text="Your expense is:"
+                android:textColor="#EEEEEE"
+
+                android:textSize="18sp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:padding="8dp"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:text="$0"
+                android:id="@+id/expense"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:padding="8dp"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:text="YOUR STATUS"
+            android:id="@+id/status"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="check status" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
