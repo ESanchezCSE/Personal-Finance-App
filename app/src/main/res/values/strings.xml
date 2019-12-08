@@ -2,6 +2,8 @@
     <string name="app_name">BookKeeper</string>
     <string name="edit_Username">Email</string>
     <string name="edit_Password">Password</string>
+    <string name="advice_text"></string>
+    <string name="final_advice">I love you</string>
 
     <array name="timeLapse">
         <item>Weekly</item>
