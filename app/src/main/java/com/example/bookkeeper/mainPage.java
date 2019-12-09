@@ -30,7 +30,7 @@ public class mainPage extends AppCompatActivity {
         texthome = (LinearLayout) findViewById(R.id.texthome);
         menus = (LinearLayout) findViewById(R.id.menus);
 
-        bgapp.animate().translationY(-2600).setDuration(800).setStartDelay(300);
+        bgapp.animate().translationY(-1600).setDuration(800).setStartDelay(300);
         pig.animate().alpha(0).setDuration(800).setStartDelay(600);
         textsplash.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(300);
 
