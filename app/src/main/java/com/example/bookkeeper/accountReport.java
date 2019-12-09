@@ -21,9 +21,9 @@ public class accountReport extends AppCompatActivity {
     String uid;
 
 TextView status1,income1,expense1;
-Button btn;
-DatabaseReference reff;
+DatabaseReference reff1,reff2;
 FirebaseAuth mAuth;
+Button btn;
 double totalincome,totalexpense;
 
 
@@ -32,45 +32,103 @@ double totalincome,totalexpense;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_report);
 
-        income1=(TextView) findViewById(R.id.income);
-        expense1=(TextView) findViewById(R.id.expense);
-        status1=(TextView)findViewById(R.id.status);
-        btn=(Button)findViewById(R.id.button);
+        income1 = (TextView) findViewById(R.id.income);
+        expense1 = (TextView) findViewById(R.id.expense);
+        status1 = (TextView) findViewById(R.id.status);
+        btn = (Button) findViewById(R.id.button);
+
+        reff1 = FirebaseDatabase.getInstance().getReference();
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
+
+        // [START get_user_profile]
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            uid = user.getUid();
+        }// [END get_user_profile]
+
+
+        // Initialize Database
+        reff1 = FirebaseDatabase.getInstance().getReference()
+                .child("users").child(uid).child("income");
+        reff1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String i_field = dataSnapshot.child("incomeMonthly").getValue().toString();
+                totalincome = Double.valueOf(i_field);
+                String temp_income = Double.toString(totalincome);
+                income1.setText(temp_income);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        // Initialize Database
+        reff2 = FirebaseDatabase.getInstance().getReference()
+                .child("users").child(uid).child("expenses");
+        reff2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String childcare = dataSnapshot.child("childCareBill").getValue().toString();
+                String garbage = dataSnapshot.child("garbageBill").getValue().toString();
+                String groceries = dataSnapshot.child("groceriesBill").getValue().toString();
+                String gym = dataSnapshot.child("gymBill").getValue().toString();
+                String insurance = dataSnapshot.child("insuranceBill").getValue().toString();
+                String internet = dataSnapshot.child("internetBill").getValue().toString();
+                String phone = dataSnapshot.child("phoneBill").getValue().toString();
+                String rent = dataSnapshot.child("rentBill").getValue().toString();
+                String stream = dataSnapshot.child("streamingBill").getValue().toString();
+                String subscription = dataSnapshot.child("subscriptionBill").getValue().toString();
+                String water = dataSnapshot.child("waterBill").getValue().toString();
+                double a = Double.valueOf(childcare);
+                double b = Double.valueOf(garbage);
+                double c = Double.valueOf(groceries);
+                double d = Double.valueOf(gym);
+                double e = Double.valueOf(insurance);
+                double f = Double.valueOf(internet);
+                double g = Double.valueOf(phone);
+                double h = Double.valueOf(rent);
+                double i = Double.valueOf(stream);
+                double j = Double.valueOf(subscription);
+                double k = Double.valueOf(water);
+                totalexpense = a + b + c + d + e + f + g + h + i + j + k;
+                String i_expense = Double.toString(totalexpense);
+                expense1.setText(i_expense);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View view) {
-                                       reff = FirebaseDatabase.getInstance().getReference();
+            @Override
+            public void onClick(View v) {
+                if (totalincome > totalexpense) {
+                    String message = "You are earning more keep it up!";
+                    status1.setText(message);
+                } else if (totalexpense > totalincome) {
+                    String message = "You are spending more, Watch out!";
+                    status1.setText(message);
+                } else if (totalincome == totalexpense) {
+                    String message = "Your finance is stable";
+                    status1.setText(message);
+                }
+            }
+        });
 
-                                       // Initialize Firebase Auth
-                                       mAuth = FirebaseAuth.getInstance();
-                                       // [END initialize_auth]
-
-                                       // [START get_user_profile]
-                                       FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                       if (user != null) {
-                                           uid = user.getUid();
-                                       }// [END get_user_profile]
 
 
-                                       // Initialize Database
-                                       reff = FirebaseDatabase.getInstance().getReference()
-                                               .child("users").child(uid).child("income");
-                                       reff.addValueEventListener(new ValueEventListener() {
-                                           @Override
-                                           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                               String i_field = dataSnapshot.child("incomeMonthly").getValue().toString();
-                                               income1.setText(i_field);
-                                           }
-
-                                           @Override
-                                           public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                           }
-                                       });
-
-                                   }
-            });
+    }
 
 
 
@@ -78,4 +136,3 @@ double totalincome,totalexpense;
 
 
     }
-}
