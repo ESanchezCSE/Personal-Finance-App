@@ -6,14 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".adviceColumn">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3E838D"
+        android:orientation="vertical"></LinearLayout>
+
     <TextView
         android:id="@+id/advice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="346dp"
+        android:layout_height="730dp"
         android:layout_marginTop="20dp"
+        android:textColor="#EEEEEE"
         android:text="@string/advice_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/textView5"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textColor="#EEEEEE"
+            android:textAlignment="center"
+            android:text="Advice"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
