@@ -3,6 +3,7 @@ package com.example.bookkeeper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +18,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import lecho.lib.hellocharts.model.PieChartData;
+import lecho.lib.hellocharts.model.SliceValue;
+import lecho.lib.hellocharts.view.PieChartView;
+
 public class accountReport extends AppCompatActivity {
     String uid;
+    PieChartView pieChartView;
 
 TextView status1,income1,expense1;
 DatabaseReference reff1,reff2;
@@ -36,6 +45,9 @@ double totalincome,totalexpense;
         expense1 = (TextView) findViewById(R.id.expense);
         status1 = (TextView) findViewById(R.id.status);
         btn = (Button) findViewById(R.id.button);
+        pieChartView = findViewById(R.id.chart);
+
+
 
         reff1 = FirebaseDatabase.getInstance().getReference();
 
@@ -110,6 +122,7 @@ double totalincome,totalexpense;
             }
         });
 
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,6 +136,18 @@ double totalincome,totalexpense;
                     String message = "Your finance is stable";
                     status1.setText(message);
                 }
+
+                List pieData = new ArrayList<>();
+                int i = (int) Math.round(totalincome);
+                int j = (int) Math.round(totalexpense);
+
+                pieData.add(new SliceValue(i, Color.LTGRAY).setLabel("Income"));
+                pieData.add(new SliceValue(j, Color.RED).setLabel("Expense"));
+
+                PieChartData pieChartData = new PieChartData(pieData);
+                pieChartData.setHasLabels(true).setValueLabelTextSize(14);
+                pieChartData.setHasCenterCircle(true).setCenterText1("Monthly Finance").setCenterText1FontSize(20).setCenterText1Color(Color.parseColor("#FFFFFF"));
+                pieChartView.setPieChartData(pieChartData);
             }
         });
 
