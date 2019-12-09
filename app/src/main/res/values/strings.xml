@@ -2,8 +2,8 @@
     <string name="app_name">BookKeeper</string>
     <string name="edit_Username">Email</string>
     <string name="edit_Password">Password</string>
-    <string name="advice_text"></string>
-    <string name="final_advice">I love you</string>
+    <string name="advice_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor id aliquet lectus proin nibh nisl. \n\nPlacerat in egestas erat imperdiet sed. Cras sed felis eget velit aliquet sagittis. Blandit aliquam etiam erat velit scelerisque. Aliquet eget sit amet tellus. Tincidunt id aliquet risus feugiat in ante metus dictum. Congue quisque egestas diam in arcu cursus. Mi ipsum faucibus vitae aliquet nec ullamcorper sit. Felis eget velit aliquet sagittis id consectetur purus. Urna molestie at elementum eu. Et ultrices neque ornare aenean euismod elementum nisi quis eleifend. \n\nMi in nulla posuere sollicitudin aliquam ultrices. Lacinia at quis risus sed vulputate odio ut enim blandit.Elementum nibh tellus molestie nunc non blandit massa enim. Quam quisque id diam vel quam elementum pulvinar. Turpis egestas sed tempus urna. Faucibus a pellentesque sit amet porttitor eget dolor morbi non. In nisl nisi scelerisque eu. Quam id leo in vitae turpis massa sed. Egestas egestas fringilla phasellus faucibus. Id donec ultrices tincidunt arcu non sodales neque sodales ut.</string>
+    <string name="final_advice">Test</string>
 
     <array name="timeLapse">
         <item>Weekly</item>
