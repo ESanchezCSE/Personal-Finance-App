@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:padding="8dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="28dp"
                 android:text="Your income is:"
                 android:textSize="18sp"
                 android:textColor="#EEEEEE"
@@ -41,7 +41,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
                 android:padding="8dp"
                 android:layout_marginTop="12dp"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:padding="8dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="28dp"
                 android:text="Your expense is:"
                 android:textColor="#EEEEEE"
 
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
                 android:padding="8dp"
                 android:layout_marginTop="12dp"
@@ -91,9 +91,9 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:padding="8dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="38dp"
             android:textStyle="bold"
-            android:text="YOUR STATUS"
+            android:text="* * * * * * * * *"
             android:id="@+id/status"
             android:layout_gravity="center"
             android:textSize="18sp"
@@ -104,7 +104,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="check status" />
+            android:layout_marginTop="13dp"
+            android:text="STATUS" />
 
     </LinearLayout>
 
