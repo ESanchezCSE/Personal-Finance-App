@@ -18,6 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class accountSetup extends AppCompatActivity {
     EditText editIncome;
+    EditText editSavings;
+    EditText editRothIRA;
+    EditText editMatch401Amount;
     EditText editRent;
     EditText editElectricity;
     EditText editWater;
@@ -50,6 +53,9 @@ public class accountSetup extends AppCompatActivity {
         databaseIncome = FirebaseDatabase.getInstance().getReference();
 
         editIncome = (EditText) findViewById(R.id.editIncome);
+        editSavings = (EditText) findViewById(R.id.editSavings);
+        editRothIRA = (EditText) findViewById(R.id.editRothIRA);
+        editMatch401Amount = (EditText) findViewById(R.id.editMatch401Amount);
         editRent = (EditText) findViewById(R.id.editRent);
         editElectricity = (EditText) findViewById(R.id.editElectricity);
         editWater = (EditText) findViewById(R.id.editWater);
@@ -88,6 +94,9 @@ public class accountSetup extends AppCompatActivity {
 
     private void addIncome(String uid){
         double incomeFinal;
+        double savings;
+        double rothIRAAmount;
+        double match401Amount;
         double incomeAmount = Double.parseDouble(editIncome.getText().toString());
         String reoccurance = spinnerOccuring.getSelectedItem().toString();
 
@@ -109,15 +118,33 @@ public class accountSetup extends AppCompatActivity {
                     incomeFinal = -1;
             }
 
-            Income incomeMonth = new Income(incomeFinal);
+            if(!TextUtils.isEmpty(editSavings.getText())){
+                savings = Double.parseDouble(editSavings.getText().toString());
+            } else{
+                savings = 0;
+            }
 
-            databaseIncome.child("users").child(uid).child("income").setValue(incomeMonth);
+            if(!TextUtils.isEmpty(editRothIRA.getText())){
+                rothIRAAmount = Double.parseDouble(editRothIRA.getText().toString());
+            } else{
+                rothIRAAmount = 0;
+            }
+
+            if(!TextUtils.isEmpty(editMatch401Amount.getText())){
+                match401Amount = Double.parseDouble(editMatch401Amount.getText().toString());
+            } else{
+                match401Amount = 0;
+            }
+
+            Income income = new Income(incomeFinal, savings, rothIRAAmount, match401Amount);
+
+            databaseIncome.child("users").child(uid).child("income").setValue(income);
 
             Toast.makeText(this, "Income added", Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(this, loanSetup.class);
             startActivity(intent);
-        }else{
+        } else{
             Toast.makeText(this, "You should enter a valid value for income", Toast.LENGTH_LONG).show();
         }
     }

@@ -34,6 +34,64 @@
             app:layout_constraintStart_toEndOf="@+id/editIncome"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/editSavings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="Savings Account Amount"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editIncome" />
+
+        <EditText
+            android:id="@+id/editRothIRA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="Roth/Traditional IRA Amount"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editSavings" />
+
+        <TextView
+            android:id="@+id/textMatch401TF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Does your company offer 401k Match?"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editRothIRA" />
+
+        <TextView
+            android:id="@+id/textMatch401Optional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="If true, fill in the box below. If false, leave it blank."
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textMatch401TF" />
+
+        <EditText
+            android:id="@+id/editMatch401Amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="401 Match Amount"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textMatch401Optional" />
+
         <Button
             android:id="@+id/buttonSubmitIncome"
             android:layout_width="241dp"
@@ -56,7 +114,7 @@
             android:text="Expenses/Bills:"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editIncome" />
+            app:layout_constraintTop_toBottomOf="@+id/editMatch401Amount" />
 
         <EditText
             android:id="@+id/editRent"
