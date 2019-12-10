@@ -97,10 +97,11 @@ public class accountSetup extends AppCompatActivity {
         double savings;
         double rothIRAAmount;
         double match401Amount;
-        double incomeAmount = Double.parseDouble(editIncome.getText().toString());
+        double incomeAmount;// = Double.parseDouble(editIncome.getText().toString());
         String reoccurance = spinnerOccuring.getSelectedItem().toString();
 
         if(!TextUtils.isEmpty(editIncome.getText())){
+            incomeAmount = Double.parseDouble(editIncome.getText().toString());
             switch(reoccurance){
                 case "Weekly":
                     incomeFinal = incomeAmount * 4;
