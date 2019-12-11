@@ -10,6 +10,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class mainPage extends AppCompatActivity {
 
@@ -81,6 +84,8 @@ public class mainPage extends AppCompatActivity {
         btn_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(mainPage.this, "Successfully Logged out",Toast.LENGTH_SHORT).show();
                 Intent intent6 = new Intent(mainPage.this,MainActivity.class);
                 startActivity(intent6);
             }
