@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+
+    <ImageView
+        android:layout_width="285dp"
+        android:layout_height="204dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:src="@drawable/bookkepper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="98dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="275dp"
         android:layout_marginEnd="98dp"
         android:ems="10"
         android:hint="@string/edit_Username"
@@ -25,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="98dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="22dp"
         android:layout_marginEnd="98dp"
         android:ems="10"
         android:hint="@string/edit_Password"
@@ -51,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="161dp"
         android:onClick="sendSignUp"
         android:text="Sign Up"
