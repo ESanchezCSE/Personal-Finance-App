@@ -55,6 +55,17 @@ public class adviceColumn extends AppCompatActivity {
 
 
     double totalCostOfBills;
+    double rent;
+    double groceries;
+    double childCare;
+    double phone;
+    double internet;
+    double insurance;
+    double garbage;
+    double water;
+
+
+
 
     double incomeMonthly;
     double savingsAmount;
@@ -114,9 +125,15 @@ public class adviceColumn extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 totalCostOfBills = Double.valueOf(dataSnapshot.child("totalCostOfBills").getValue().toString());
+                rent = Double.valueOf(dataSnapshot.child("rentBill").getValue().toString());
+                groceries = Double.valueOf(dataSnapshot.child("rentBill").getValue().toString());
+                childCare = Double.valueOf(dataSnapshot.child("rentBill").getValue().toString());
+                phone = Double.valueOf(dataSnapshot.child("rentBill").getValue().toString());
+                internet = Double.valueOf(dataSnapshot.child("rentBill").getValue().toString());
+                insurance = Double.valueOf(dataSnapshot.child("rentBill").getValue().toString());
+                garbage = Double.valueOf(dataSnapshot.child("rentBill").getValue().toString());
+                water = Double.valueOf(dataSnapshot.child("rentBill").getValue().toString());
 
-                String i_expense = " " + Double.toString(totalCostOfBills);
-                //textElement.append(i_expense);
                 freeIncome = incomeMonthly - totalCostOfBills;
                 tempFreeIncome = freeIncome;
 
@@ -126,55 +143,91 @@ public class adviceColumn extends AppCompatActivity {
                 else{
                     textElement.setText("Oh no!  ");
                 }
-                textElement.append("You currently have $"+freeIncome+"0 of free income\n\n");
+                textElement.append("You currently have $"+freeIncome+"0 of free income.\n\n");
 
-                //if(tempFreeIncome > 1) {
+                if(freeIncome > 1) {
 
-                //check for savings
-                if(savingsAmount <=  totalCostOfBills){
-                    double a = totalCostOfBills - savingsAmount;
-                    if(tempFreeIncome < a){
-                        a = tempFreeIncome;
+                    //check for savings
+                    if(savingsAmount <=  totalCostOfBills  && tempFreeIncome > 0){
+                        double a = totalCostOfBills - savingsAmount;
+                        if(tempFreeIncome < a){
+                            a = tempFreeIncome;
+                        }
+
+                        textElement.append("You don't currently have enough savings as it is prudent to have at least one month's of expenses in a savings account, just in case.  " +
+                                "We suggest contributing into that, until the account reaches $" + totalCostOfBills + "0.  You can contribute $" + a + "0 this month!\n\n");
+
+                        tempFreeIncome = tempFreeIncome - a;
                     }
 
-                    textElement.append("You don't currently have enough savings as it is prudent to have at least one month's of expenses in a savings account, just in case.  " +
-                            "We suggest contributing into that, until the account reaches $" + totalCostOfBills + "0.  You can contribute $" + a + "0 this month!\n\n");
+                    //check 401k
+                    double maxCompanyMatching = companyMatching * incomeMonthly * 12;
+                    if(companyMatching >= 0.001 && iraAmount <= maxCompanyMatching  && tempFreeIncome > 0){
+                        double b = maxCompanyMatching - iraAmount;
+                        double a = b;
+                        if(tempFreeIncome < a){
+                            a = tempFreeIncome;
+                        }
+                        textElement.append("Your company matches up to " + companyMatching + "% of your 401k contribution!  You have put $" + iraAmount + "0 in this year and should put in $" + b + "0 more to maximize the matching.  " +
+                                "You can contribute $" + a + "0 this month!\n\n");
 
-                    tempFreeIncome = tempFreeIncome - a;
-                }
-
-                //check 401k
-                double maxCompanyMatching = companyMatching * incomeMonthly * 12;
-                if(companyMatching >= 0.001 && iraAmount <= maxCompanyMatching){
-                    double b = maxCompanyMatching - iraAmount;
-                    double a = b;
-                    if(tempFreeIncome < a){
-                        a = tempFreeIncome;
-                    }
-                    textElement.append("Your company matches up to " + companyMatching + " 401k contribution!  You have put $" + iraAmount + "0 in this year and can put in $" + b + "0 more to maximize the matching.  " +
-                            "You can contribute $" + a + "0 this month!\n\n");
-
-                    tempFreeIncome = tempFreeIncome - a;
-                }
-
-                //check 3 months savings
-                if(savingsAmount <=  3 * totalCostOfBills){
-                    double a = 3 * totalCostOfBills - savingsAmount;
-                    if(tempFreeIncome < a){
-                        a = tempFreeIncome;
+                        tempFreeIncome = tempFreeIncome - a;
                     }
 
-                    textElement.append("We suggest increasing your savings account to hold at least three month's of expenses.  " +
-                            "The target for this account is $" + 3 * totalCostOfBills + "0.  You can contribute $" + a + "0 this month!\n\n");
+                    //check 3 months savings
+                    if(savingsAmount <=  3 * totalCostOfBills  && tempFreeIncome > 0){
+                        double a = 3 * totalCostOfBills - savingsAmount;
+                        if(tempFreeIncome < a){
+                            a = tempFreeIncome;
+                        }
 
-                    tempFreeIncome = tempFreeIncome - a;
+                        textElement.append("We suggest increasing your savings account to hold at least three month's of expenses.  " +
+                                "The target for this account is $" + 3 * totalCostOfBills + "0.  You can contribute $" + a + "0 this month!\n\n");
+
+                        tempFreeIncome = tempFreeIncome - a;
+                    }
+
+                    //check 3 months savings
+                    if(savingsAmount <=  3 * totalCostOfBills + 6000 && tempFreeIncome > 0){
+                        double a = savingsAmount - 3 * totalCostOfBills;
+
+                        if(a < 0){
+                            a=0;
+                        }
+
+                        double b = 6000 - a;
+
+                        if(tempFreeIncome < b){
+                            b = tempFreeIncome;
+                        }
+
+
+
+                        textElement.append("You can contribute up to $6000 yearly into a Roth or Traditional IRA.  " +
+                                "You currently have $" + a + "0.  You can contribute $" + b + "0 this month!\n\n");
+
+                        tempFreeIncome = tempFreeIncome - b;
+                    }
+
+                    if(tempFreeIncome > 0){
+                        textElement.append("\n\nYou have $"+tempFreeIncome + "0 left to spend this month!  As you are financially stable for this month, go wild!");
+                    }
                 }
 
-               // textElement.append("\n\n"+tempFreeIncome + " left");
-            }
+                else{
+                    if(rent + groceries + water + childCare + phone + internet + insurance + garbage <= .85 * incomeMonthly){
+                        textElement.append("We suggest lowering non-mandatory expenses to get you back on track!\n\n");
+                    }
+
+                    if (rent >= incomeMonthly/3) {
+                        textElement.append("We suggest looking for a place with lower rent.  Your rent should ideally be around $"+incomeMonthly/3 + "0!");
+                    }
 
 
-            // }
+                }
+
+
+             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
