@@ -47,6 +47,7 @@ public class loanPage extends AppCompatActivity {
     List loanInfo6 = new ArrayList();
 
     TextView textview10;
+
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]

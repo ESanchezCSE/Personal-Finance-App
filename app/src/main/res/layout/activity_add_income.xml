@@ -5,5 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".addIncome">
+    <EditText
+        android:id="@+id/editIncome1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Income"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Spinner
+        android:id="@+id/spinnerOccuring1"
+        android:layout_width="154dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="15dp"
+        android:entries="@array/timeLapse"
+        app:layout_constraintStart_toEndOf="@+id/editIncome1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editSavings1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Savings Account Amount"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editIncome1" />
+
+    <EditText
+        android:id="@+id/editRothIRA1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Roth/Traditional IRA Amount"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSavings1" />
+
+    <TextView
+        android:id="@+id/textMatch401TF1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Does your company offer 401k Match?"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editRothIRA1" />
+
+    <TextView
+        android:id="@+id/textMatch401Optional1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="If true, fill in the box below. If false, leave it blank."
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMatch401TF1" />
+
+    <EditText
+        android:id="@+id/editMatch401Amount1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="401 Match Amount"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMatch401Optional1" />
+
+    <Button
+        android:id="@+id/buttonSubmitIncome1"
+        android:layout_width="241dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="87dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editMatch401Amount1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
