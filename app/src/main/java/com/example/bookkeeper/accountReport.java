@@ -146,7 +146,7 @@ double totalincome,totalexpense;
 
                 PieChartData pieChartData = new PieChartData(pieData);
                 pieChartData.setHasLabels(true).setValueLabelTextSize(14);
-                pieChartData.setHasCenterCircle(true).setCenterText1("Monthly Finance").setCenterText1FontSize(20).setCenterText1Color(Color.parseColor("#FFFFFF"));
+                pieChartData.setHasCenterCircle(true).setCenterText1("Monthly Finance").setCenterText1FontSize(20).setCenterText1Color(Color.parseColor("#000000"));
                 pieChartView.setPieChartData(pieChartData);
             }
         });
