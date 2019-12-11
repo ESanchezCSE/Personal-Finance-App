@@ -8,6 +8,7 @@ import android.util.Log;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(MainActivity.this, "Email or Password is incorrect!",Toast.LENGTH_SHORT).show(); //Error checking
                         }
 
                     }
