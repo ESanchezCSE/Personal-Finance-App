@@ -1,9 +1,13 @@
 package com.example.bookkeeper;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,57 +19,50 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+
+
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 
-
-
+import lecho.lib.hellocharts.model.PieChartData;
+import lecho.lib.hellocharts.model.SliceValue;
+import lecho.lib.hellocharts.view.PieChartView;
 
 
 public class adviceColumn extends AppCompatActivity {
 
-
     String uid;
 
+    TextView status1,income1,expense1;
+    DatabaseReference reff1,reff2;
+    FirebaseAuth mAuth;
+    double totalincome,totalexpense;
 
-    DatabaseReference databaseIncome;
+
 
     Expenses expenses; // this is either
     Loan loans;
     Income income;
 
-    // [START declare_auth]
-    private FirebaseAuth mAuth;
-    // [END declare_auth]
 
     private static final String TAG = "MainActivity";
 
-    private ValueEventListener mPostListener;
 
-    private DatabaseReference mExpenseReference;
-    private DatabaseReference mLoanReference;
-    private DatabaseReference mIncomeReference;
 
     TextView textElement;
 
-    double rentBill;
-    double electricityBill;
-    double waterBill;
-    double garbageBill;
-    double insuranceBill;
-    double groceriesBill;
-    double childCareBill;
-    double phoneBill;
-    double internetBill;
-    double gymBill;
-    double streamingBill;
-    double subscriptionBill;
+
     double totalCostOfBills;
 
     double incomeMonthly;
+    double savingsAmount;
+    double companyMatching;
+    double iraAmount;
 
     double freeIncome;
-
+    double tempFreeIncome;
 
 
 
@@ -74,7 +71,12 @@ public class adviceColumn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advice_column);
 
-        databaseIncome = FirebaseDatabase.getInstance().getReference();
+        textElement = (TextView) findViewById(R.id.advice);
+
+
+
+
+        reff1 = FirebaseDatabase.getInstance().getReference();
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -84,86 +86,108 @@ public class adviceColumn extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             uid = user.getUid();
-            //Toast.makeText(this, "" + user.getUid(), Toast.LENGTH_SHORT).show();//Error checking
         }// [END get_user_profile]
 
+
         // Initialize Database
-        mExpenseReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("expenses");//loans will be changed here for either income or expenses.
-        mLoanReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("loans");//loans will be changed here for either income or expenses.
-        mIncomeReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("income");//loans will be changed here for either income or expenses.
-
-        textElement = (TextView) findViewById(R.id.advice);
-
-
-        double totalExpenses;
-
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // Add value event listener to the post
-        // [START post_value_event_listener]
-        ValueEventListener postListener = new ValueEventListener() {
+        reff1 = FirebaseDatabase.getInstance().getReference()
+                .child("users").child(uid).child("income");
+        reff1.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                income = dataSnapshot.getValue(Income.class);//loan is what you set earlier, expenses income.
-
-                expenses = dataSnapshot.getValue(Expenses.class);//loan is what you set earlier, expenses income.
-                //loans = dataSnapshot.getValue(Loan.class);//loan is what you set earlier, expenses income.
-
-
-                //Toast.makeText(adviceColumn.this, "Total Bill Value at: " + expenses.getTotalCostOfBills(),Toast.LENGTH_LONG).show();// Error Checking
-
-                incomeMonthly = income.getIncomeMonthly();
-                totalCostOfBills = expenses.getTotalCostOfBills();
-
-
-                //freeIncome = incomeMonthly - totalCostOfBills;
-
-                //textElement.setText("Total Cost of Bills are " + String.valueOf(totalCostOfBills));
-
-                textElement.setText("You currently have $6,073 of free income!  Excellent!\n\nYou don't currently have an emergency savings account so we suggest focusing on creating that, until it reaches" +
-                        " $2,000, roughly one months of your monthly spending.  You can contribute $2,000 this month." +
-                        "\n\n" +
-                        "Your company matches $3840 into 401k so we suggest contributing towards that, you have 3 months to max" +
-                        " your contributions so we suggest contributing $1280." +
-                        "\n\n" +
-                        "With your leftover income, we suggest contributing to your emergency fund until it reaches " +
-                        "$6,000 saved, roughly three months of your monthly spending.  You can contribute $2,793 this month.");
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                incomeMonthly = Double.valueOf(dataSnapshot.child("incomeMonthly").getValue().toString());
+                savingsAmount = Double.valueOf(dataSnapshot.child("savingsAmount").getValue().toString());
+                companyMatching = Double.valueOf(dataSnapshot.child("match401Amount").getValue().toString());
+                iraAmount = Double.valueOf(dataSnapshot.child("rothIRAAmount").getValue().toString());
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // [START_EXCLUDE]
-                Toast.makeText(adviceColumn.this, "Failed to load post.",Toast.LENGTH_LONG).show(); //Error checking
-                // [END_EXCLUDE]
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
-        };
-        mExpenseReference.addValueEventListener(postListener);
-        // [END post_value_event_listener]
+        });
 
-        // Keep copy of post listener so we can remove it when app stops
-        mPostListener = postListener;
+        // Initialize Database
+        reff2 = FirebaseDatabase.getInstance().getReference()
+                .child("users").child(uid).child("expenses");
+        reff2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                totalCostOfBills = Double.valueOf(dataSnapshot.child("totalCostOfBills").getValue().toString());
+
+                String i_expense = " " + Double.toString(totalCostOfBills);
+                //textElement.append(i_expense);
+                freeIncome = incomeMonthly - totalCostOfBills;
+                tempFreeIncome = freeIncome;
+
+                if(freeIncome > 0){
+                    textElement.setText("Congrats!  ");
+                }
+                else{
+                    textElement.setText("Oh no!  ");
+                }
+                textElement.append("You currently have $"+freeIncome+"0 of free income\n\n");
+
+                //if(tempFreeIncome > 1) {
+
+                //check for savings
+                if(savingsAmount <=  totalCostOfBills){
+                    double a = totalCostOfBills - savingsAmount;
+                    if(tempFreeIncome < a){
+                        a = tempFreeIncome;
+                    }
+
+                    textElement.append("You don't currently have enough savings as it is prudent to have at least one month's of expenses in a savings account, just in case.  " +
+                            "We suggest contributing into that, until the account reaches $" + totalCostOfBills + "0.  You can contribute $" + a + "0 this month!\n\n");
+
+                    tempFreeIncome = tempFreeIncome - a;
+                }
+
+                //check 401k
+                double maxCompanyMatching = companyMatching * incomeMonthly * 12;
+                if(companyMatching >= 0.001 && iraAmount <= maxCompanyMatching){
+                    double b = maxCompanyMatching - iraAmount;
+                    double a = b;
+                    if(tempFreeIncome < a){
+                        a = tempFreeIncome;
+                    }
+                    textElement.append("Your company matches up to " + companyMatching + " 401k contribution!  You have put $" + iraAmount + "0 in this year and can put in $" + b + "0 more to maximize the matching.  " +
+                            "You can contribute $" + a + "0 this month!\n\n");
+
+                    tempFreeIncome = tempFreeIncome - a;
+                }
+
+                //check 3 months savings
+                if(savingsAmount <=  3 * totalCostOfBills){
+                    double a = 3 * totalCostOfBills - savingsAmount;
+                    if(tempFreeIncome < a){
+                        a = tempFreeIncome;
+                    }
+
+                    textElement.append("We suggest increasing your savings account to hold at least three month's of expenses.  " +
+                            "The target for this account is $" + 3 * totalCostOfBills + "0.  You can contribute $" + a + "0 this month!\n\n");
+
+                    tempFreeIncome = tempFreeIncome - a;
+                }
+
+               // textElement.append("\n\n"+tempFreeIncome + " left");
+            }
+
+
+            // }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
 
 
     }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // Remove post value event listener
-        if (mPostListener != null) {
-            mExpenseReference.removeEventListener(mPostListener);
-        }
-    }
-
-
 
 }
