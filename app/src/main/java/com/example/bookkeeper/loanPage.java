@@ -258,14 +258,14 @@ public class loanPage extends AppCompatActivity {
 
             Axis axis = new Axis();
             axis.setName("Time in Years");
-            axis.setTextSize(16);
+            axis.setTextSize(13);
             axis.setTextColor(Color.parseColor("#03A9F4"));
             data.setAxisXBottom(axis);
 
             Axis yAxis = new Axis();
             yAxis.setName("Amount Owed in Dollars");
             yAxis.setTextColor(Color.parseColor("#03A9F4"));
-            yAxis.setTextSize(16);
+            yAxis.setTextSize(13);
             data.setAxisYLeft(yAxis);
 
             lineChartView.setLineChartData(data);
