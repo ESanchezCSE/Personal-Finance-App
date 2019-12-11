@@ -18,9 +18,9 @@
         android:layout_width="346dp"
         android:layout_height="730dp"
         android:layout_marginTop="20dp"
-        android:textColor="#EEEEEE"
         android:text="@string/advice_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#EEEEEE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
